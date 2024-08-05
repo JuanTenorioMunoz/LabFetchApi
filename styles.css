@@ -1,14 +1,23 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
 }
+
 #data-container {
     margin-top: 20px;
 }
+
 .item {
-    margin-bottom: 10px;
+    margin-top:2vh;
+    margin-bottom: 2vh;
+    width: 50vw;
+    background-color: black;
 }
-img {
+
+img{
     max-width: 300px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
 }
+

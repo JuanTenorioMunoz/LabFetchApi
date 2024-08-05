@@ -17,7 +17,6 @@ async function fetchData(limit, type, name) {
 
     console.log (limitResponse + "limt")
 
-
     if (!limitResponse.ok) {
       throw new Error("Network response was not ok");
     }
