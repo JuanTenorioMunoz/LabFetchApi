@@ -1,16 +1,19 @@
 document.getElementById("fetch-button").addEventListener("click", fetchData);
 const inputField = document.querySelector('#inputField');
-const resultsContainer = document.getElementById("results-container");
+const typeField = document.querySelector('#type');
+const nameField = document.querySelector('#name');
 
-async function fetchData(limit, query, type) {
+
+
+async function fetchData(limit, type, name) {
   renderLoadingState();
   console.log(inputField.value)
-  limit = await inputField.value
+  limit = await inputField.value;
+  type = await typeField.value;
+  name = await nameField.value;
 
   try {
-    const limitResponse = await fetch(`https://api.jikan.moe/v4/anime?limit=${limit}`);
-    const queryResponse = await fetch(`https://api.jikan.moe/v4/anime?limit=${limit}`);
-    const typeResponse = await fetch(`https://api.jikan.moe/v4/anime?limit=${limit}`);
+    const limitResponse = await fetch(`https://api.jikan.moe/v4/anime?limit=${limit}&type=${type}&q=${name}`);
 
     console.log (limitResponse + "limt")
 
@@ -62,12 +65,12 @@ function renderLoadingState() {
 } */
 
 function renderResults(data) {
-  const container = resultsContainer;
-  container.innerHTML = ""; 
+  const container = document.getElementById("data-container");
+  container.innerHTML = ""; // Clear previous data
 
   data.data.forEach(item => {
     const div = document.createElement("div");
-    div.className = "anime";
+    div.className = "item";
     div.innerHTML = `<img src="${item.images.jpg.image_url}" alt="${item.title}">`;
     container.appendChild(div);
   });
