@@ -1,9 +1,12 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #ccc;
+    margin-top: 10vh;
+}
+
+#form {
     display: flex;
     justify-content: center;
-    margin-top: 10vh;
 }
 
 #data-container {
@@ -13,11 +16,11 @@ body {
 .item {
     margin-top:2vh;
     margin-bottom: 2vh;
-    width: 50vw;
+    width: 95vw;
     background-color: black;
 }
 
 img{
-    max-width: 300px;
+    width: 200px;
 }
 
