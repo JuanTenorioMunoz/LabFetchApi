@@ -9,15 +9,23 @@
 <body>
 
     <section class="main">
-
-        <form id="form">
-            <input id="inputField">
-            <input id="type">
-            <input id="name">
-        </form>
-
-        <h1>Fetch Example</h1>
-        <button id="fetch-button">Fetch</button>
+        <div masterContainer>
+            <div id="optionsContainer">
+                <h1>Anime</h1>
+                <h1 id="bitcoin">Bitcoin</h1>
+                <h1 id="usp">US Population</h1>
+            </div>
+            <div id="queryContainer">
+                    <form id="form">
+                            <input id="inputField" placeholder="Limit">
+                            <input id="type" placeholder="Type">
+                            <input id="name" placeholder="Name">
+                    </form>
+                    <button id="fetch-button">Fetch</button>
+            </div>
+        </div>
+        
+        
         <div id="data-container">
             <div id="results-container"></div>
         </div>

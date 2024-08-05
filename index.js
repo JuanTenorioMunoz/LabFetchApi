@@ -1,4 +1,6 @@
 document.getElementById("fetch-button").addEventListener("click", fetchData);
+document.getElementById("bitcoin").addEventListener("click", fetchBitcoin);
+
 const inputField = document.querySelector('#inputField');
 const typeField = document.querySelector('#type');
 const nameField = document.querySelector('#name');
@@ -7,6 +9,7 @@ const nameField = document.querySelector('#name');
 
 async function fetchData(limit, type, name) {
   renderLoadingState();
+
   console.log(inputField.value)
   limit = await inputField.value;
   type = await typeField.value;
@@ -27,45 +30,75 @@ async function fetchData(limit, type, name) {
     console.log(error)
     renderErrorState();
   }
+
+  try{
+    const bitcoinResponse = await fetch(`https://api.jikan.moe/v4/anime?limit=${limit}&type=${type}&q=${name}`);
+
+    console.log (bitcoinResponse + "bit")
+
+    if (!bitcoinResponse.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const dataBitcoin= await bitcoinResponse.json();
+    renderResults(dataBitcoin);
+    
+  } catch (error) {
+    console.log(error)
+    renderErrorState();
+  }
 }
 
+async function fetchBitcoin() {
+  renderLoadingState();
+
+  console.log("bitcoin")
+  try{
+    const bitcoinResponse = await fetch(`https://api.coindesk.com/v1/bpi/currentprice.json`);
+
+    console.log (bitcoinResponse + "bit")
+
+    if (!bitcoinResponse.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const dataBitcoin= await bitcoinResponse.json();
+    renderResultsBitcoin(dataBitcoin);
+    
+  } catch (error) {
+    console.log(error)
+    renderErrorState();
+  }
+}
 
 function renderErrorState() {
   const container = document.getElementById("data-container");
-  container.innerHTML = ""; // Clear previous data
+  container.innerHTML = ""; 
   container.innerHTML = "<p>Failed to load data</p>";
   console.log("Failed to load data");
 }
 
 function renderLoadingState() {
   const container = document.getElementById("data-container");
-  container.innerHTML = ""; // Clear previous data
+  container.innerHTML = ""; 
   container.innerHTML = "<p>Loading...</p>";
   console.log("Loading...");
 }
 
-/* function renderData(data) {
+function renderResultsBitcoin(data) {
   const container = document.getElementById("data-container");
-  container.innerHTML = ""; // Clear previous data
+  container.innerHTML = ""; 
 
-  const div = document.createElement("div");
-  div.className = "item";
-  div.innerHTML = ` <img src="${data?.data[0]?.images?.jpg?.image_url}" alt="fetchAlt">`;
-  console.log("this should trender" + data)
-  container.appendChild(div);
-} */
+  data.forEach(item => {
+    const div = document.createElement("div");
+    console.log("DIANA");
+    div.className = "item";
+    div.innerHTML = `<h1>${data.item.bpi}</h1>`;
+    container.appendChild(div);
+  });
+}
 
-/*const renderResults = async (data) => {
-
-  for (let index = 0; index < data.length; index++) {
-    console.log(seriesData[index])
-    console.log("SOMTHING")
-  }
-} */
-
-function renderResults(data) {
+const renderResults = (data) => {
   const container = document.getElementById("data-container");
-  container.innerHTML = ""; // Clear previous data
+  container.innerHTML = ""; 
 
   data.data.forEach(item => {
     const div = document.createElement("div");

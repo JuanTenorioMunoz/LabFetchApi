@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ccc;
+    background-color: #191919;
     margin-top: 10vh;
 }
 
@@ -9,18 +9,38 @@ body {
     justify-content: center;
 }
 
+#optionsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5vw;
+    color: white;
+}
+
+#queryContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5vw;
+}
+
 #data-container {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10vw;
 }
 
 .item {
-    margin-top:2vh;
+    margin-top: 2vh;
     margin-bottom: 2vh;
-    width: 95vw;
-    background-color: black;
+    margin-right: 2vw;
+    margin-left: 2vw;
 }
 
 img{
-    width: 200px;
+    width: 15vw;
+    height: 50vh;
+    border-radius: 1vw;
 }
 
